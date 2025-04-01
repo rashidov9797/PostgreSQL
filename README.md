@@ -18,22 +18,22 @@ chmod +x maintenance.sh
 
 Features
 
-1. Version Info: Displays PostgreSQL version and startup time.
-2. Schema List: Lists all non-system schemas.
-3. Active Sessions: Shows currently active sessions.
-4. Lock List: Displays current locks.
-5. Dead Tuple List: Shows tables with dead tuples.
-6. Tablespace Info: Displays tablespace details.
-7. Top 15 Queries: Shows top 15 queries by execution time.
-8. Vacuum Info (Basic): Displays basic vacuum statistics.
-9. Commit & Hit Ratio: Shows commit and cache hit ratios.
-10. Replication Delay: Displays replication status and delay.
-11. Object Count by Schema: Counts objects per schema.
-12. Index Usage Statistics: Shows index usage and size.
-13. Unused Indexes: Lists indexes with zero scans.
-14. Long Running Queries: Shows queries running longer than 1 minute.
-15. Vacuum Info (Detailed): Shows detailed vacuum and autovacuum stats.
-16. Switch Database/User: Allows switching between databases and users.
+1. Version Info
+2. Schema List
+3. Active Sessions
+4. Lock List
+5. Dead Tuple List
+6. Tablespace Info
+7. Top 15 Queries
+8. Vacuum Info 
+9. Commit & Hit Ratio
+10. Replication Delay
+11. Object Count by Schema
+12. Index Usage Statistics
+13. Unused Indexes
+14. Long Running Queries
+15. Vacuum Info 
+16. Switch Database/User
 
 ![image](https://github.com/user-attachments/assets/a36db033-a503-4f84-8067-ce2ba8b074a4)
 
