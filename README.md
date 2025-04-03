@@ -5,13 +5,12 @@
 This shell script is designed to manage and monitor PostgreSQL databases. It includes 16 useful functions for database administration, monitoring, and optimization.
 
 ## Installation
-1. Download the script:
-https://github.com/rashidov9797/PostgreSQL.git
-
-2. Make it executable:
+1. Download zip file:
+https://github.com/rashidov9797/PostgreSQL/archive/refs/heads/main.zip
+3. Make it executable:
 chmod +x maintenance.sh
 
-3. Run the script:
+4. Run the script:
 ./maintenance.sh
 
 
