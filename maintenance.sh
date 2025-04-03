@@ -72,7 +72,7 @@ Show_Function_Name() {
 Switch_Database_User() {
     echo -e "${YELLOW}Current Database: $D | Current User: $U${RESET}"
     echo -e "${BLUE}Available databases:${RESET}"
-    psql -P pager=off -d postgres -U postgres -c "SELECT datname AS database, pg_catalog.pg_get_userbyid(datdba) AS owner FROM pg_catalog.pg_database WHERE datname NOT IN ('template0', 'template1') ORDER BY 1;"
+    psql -P pager=off -d "$INITIAL_DB" -U "$U" -c "SELECT datname AS database, pg_catalog.pg_get_userbyid(datdba) AS owner FROM pg_catalog.pg_database WHERE datname NOT IN ('template0', 'template1') ORDER BY 1;"
     echo -n -e "${BLUE}Enter new database name (or press Enter to keep '$D'): ${RESET}"
     read new_D
     echo -n -e "${BLUE}Enter new user name (or press Enter to keep '$U'): ${RESET}"
@@ -89,15 +89,29 @@ main() {
     echo " "
     Display_Initial_Info
     echo " "
-    psql -P pager=off -d postgres -U postgres -c "SELECT datname AS database, pg_catalog.pg_get_userbyid(datdba) AS owner FROM pg_catalog.pg_database WHERE datname NOT IN ('template0', 'template1') ORDER BY 1;"
-    
+
+    # Ask for initial username first
+    echo -n -e "${BLUE}Enter username: ${RESET}"
+    read U
+    if [ -z "$U" ]; then
+        echo -e "${RED}Error: Username cannot be empty. Exiting.${RESET}"
+        exit 1
+    fi
+
+    # Set a default initial database for listing databases
+    INITIAL_DB="postgres"
+
+    # Check if the user exists and list databases
+    psql -P pager=off -d "$INITIAL_DB" -U "$U" -c "SELECT datname AS database, pg_catalog.pg_get_userbyid(datdba) AS owner FROM pg_catalog.pg_database WHERE datname NOT IN ('template0', 'template1') ORDER BY 1;" 2>/dev/null
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}Error: Could not connect with user '$U'. Please check the username and try again.${RESET}"
+        exit 1
+    fi
+
     echo -n -e "${BLUE}Enter database name: ${RESET}"
     read D
-    echo -n -e "${BLUE}Enter user name: ${RESET}"
-    read U
     
-    D=${D:-postgres}
-    U=${U:-postgres}
+    D=${D:-$INITIAL_DB}  # Default to 'postgres' if no input
 
     Display_Menu
 
