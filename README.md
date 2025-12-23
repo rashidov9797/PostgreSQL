@@ -1,50 +1,46 @@
-# PostgreSQL
-
 # PostgreSQL Maintenance Tool
 
-This shell script is designed to manage and monitor PostgreSQL databases. It includes 16 useful functions for database administration, monitoring, and optimization.
+Interactive **Bash** tool for PostgreSQL DBAs to quickly monitor, troubleshoot, and export reports from PostgreSQL databases.
 
-## Installation
-1. Download file: https://github.com/rashidov9797/PostgreSQL/archive/refs/tags/v2.tar.gz
-2. Make it executable:
+✅ 18 functions (monitoring + maintenance)  
+✅ Log **ERROR/FATAL/PANIC** counter (with extracted lines saved to file)  
+✅ Export reports to **CSV (Excel)** or **single HTML file**
+
+---
+
+## What's New (v3)
+
+Compared to the previous version (v2), this release adds:
+
+- **17. Log Error/Fatal/Panic Count**
+  - Automatically detects PostgreSQL log settings (`logging_collector`, `log_directory`, `data_directory`)
+  - Picks latest log file and counts **ERROR/FATAL/PANIC**
+  - Saves extracted lines to: `/home/postgres/pg_errors_YYYYMMDD.log`
+
+- **18. Export Reports (CSV/HTML)**
+  - Export all reports at once
+  - **CSV**: multiple `.csv` files (Excel-friendly)
+  - **HTML**: one consolidated report file:
+    `/home/postgres/pg_reports_YYYYMMDD_HHMMSS/ALL_REPORT_YYYYMMDD_HHMMSS.html`
+
+- Vacuum report split into:
+  - **8. Vacuum Info (Basic)**
+  - **15. Vacuum Info (Detailed)**
+
+<img width="793" height="811" alt="image" src="https://github.com/user-attachments/assets/37d520a0-0614-4502-90ab-f3105497da13" />
+
+
+---
+
+## Important: Configure `.pgpass` (recommended)
+
+To avoid password prompts and make the tool run smoothly, configure PostgreSQL password file **.pgpass** for the OS user that runs the script.
+
+
+---
+
+## Quick Start
+
+```bash
 chmod +x maintenance.sh
-
-3. Run the script:
 ./maintenance.sh
-
-
-
-Features
-
-1. Version Info
-2. Schema List
-3. Active Sessions
-4. Lock List
-5. Dead Tuple List
-6. Tablespace Info
-7. Top 15 Queries
-8. Vacuum Info 
-9. Commit & Hit Ratio
-10. Replication Delay
-11. Object Count by Schema
-12. Index Usage Statistics
-13. Unused Indexes
-14. Long Running Queries
-15. Vacuum Info 
-16. Switch Database/User
-
-![image](https://github.com/user-attachments/assets/a36db033-a503-4f84-8067-ce2ba8b074a4)
-
-
-Usage
-
-When prompted with Select an option:, enter a number between 1 and 16.
-
-Use 99 to exit the script.
-
-Switch Database/User: Allows switching between databases and users.
-
-
-Contact
-For questions or feedback, reach out at: azikrashidov1103@gmail.com
-
