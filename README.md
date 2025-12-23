@@ -9,7 +9,7 @@ Includes **18 useful functions** for database administration, monitoring, and op
 
 1. **Download the file:**
 ```bash
-   wget https://github.com/rashidov9797/PostgreSQL/archive/refs/tags/v3.0.0.tar.gz
+   wget https://github.com/rashidov9797/PostgreSQL/archive/refs/tags/v3.tar.gz
    tar -xzf v3.0.0.tar.gz
    cd PostgreSQL-3.0.0
 ```
